@@ -23,8 +23,8 @@ class LoginController extends GetxController {
     print("circluar running");
 
     Request request = Request(url: urlLogin, body: {
-      'email': emailTextController,
-      'password': passwordTextController,
+      'email': emailTextController.text,
+      'password': passwordTextController.text,
     });
 
     print("email pass sent to request");
@@ -35,5 +35,12 @@ class LoginController extends GetxController {
       Get.back();
       Get.offNamed('/homeView');
     }).catchError((onError) {});
+  }
+
+  @override
+  void onClose() {
+    emailTextController?.dispose();
+    passwordTextController?.dispose();
+    super.onClose();
   }
 }

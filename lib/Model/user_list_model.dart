@@ -2,17 +2,15 @@ class UserListModel {
   int page;
   int perPage;
   int total;
-  int totalPage;
+  int totalPages;
   List<Data> data;
   Ad ad;
-
-  List<Data> value;
 
   UserListModel(
       {this.page,
       this.perPage,
       this.total,
-      this.totalPage,
+      this.totalPages,
       this.data,
       this.ad});
 
@@ -20,7 +18,7 @@ class UserListModel {
     page = json['page'];
     perPage = json['per_page'];
     total = json['total'];
-    totalPage = json['total_pages'];
+    totalPages = json['total_pages'];
     if (json['data'] != null) {
       data = new List<Data>();
       json['data'].forEach((v) {
@@ -35,7 +33,7 @@ class UserListModel {
     data['page'] = this.page;
     data['per_page'] = this.perPage;
     data['total'] = this.total;
-    data['total_page'] = this.totalPage;
+    data['total_pages'] = this.totalPages;
     if (this.data != null) {
       data['data'] = this.data.map((v) => v.toJson()).toList();
     }
@@ -53,19 +51,13 @@ class Data {
   String lastName;
   String avatar;
 
-  Data({
-    this.id,
-    this.email,
-    this.firstName,
-    this.lastName,
-    this.avatar,
-  });
+  Data({this.id, this.email, this.firstName, this.lastName, this.avatar});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    email = json['email'];
     firstName = json['first_name'];
     lastName = json['last_name'];
-    email = json['email'];
     avatar = json['avatar'];
   }
 
@@ -85,11 +77,7 @@ class Ad {
   String url;
   String text;
 
-  Ad({
-    this.company,
-    this.text,
-    this.url,
-  });
+  Ad({this.company, this.url, this.text});
 
   Ad.fromJson(Map<String, dynamic> json) {
     company = json['company'];
@@ -100,7 +88,7 @@ class Ad {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['company'] = this.company;
-    data['url'] = this.text;
+    data['url'] = this.url;
     data['text'] = this.text;
     return data;
   }
