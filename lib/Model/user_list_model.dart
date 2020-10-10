@@ -6,6 +6,8 @@ class UserListModel {
   List<Data> data;
   Ad ad;
 
+  List<Data> value;
+
   UserListModel(
       {this.page,
       this.perPage,
