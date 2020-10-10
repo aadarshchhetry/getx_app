@@ -7,10 +7,11 @@ class Request {
   Request({this.url, this.body});
 
   Future<http.Response> post() {
-    return http.post(urlBase + url, body: body).timeout(Duration(minutes: 2));
+    print("post called");
+    return http.post(urlBase + url, body: body).timeout(Duration(seconds: 5));
   }
 
   Future<http.Response> get() {
-    return http.get(urlBase + url).timeout(Duration(minutes: 2));
+    return http.get(urlBase + url).timeout(Duration(seconds: 25));
   }
 }

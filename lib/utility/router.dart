@@ -9,7 +9,7 @@ class Router {
       page: () => LoginView(),
     ),
     GetPage(
-      name: '/homeview',
+      name: '/homeView',
       page: () => HomeView(),
     )
   ];

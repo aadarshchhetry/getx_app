@@ -20,16 +20,20 @@ class LoginController extends GetxController {
     Get.dialog(Center(child: CircularProgressIndicator()),
         barrierDismissible: false);
 
+    print("circluar running");
+
     Request request = Request(url: urlLogin, body: {
       'email': emailTextController,
       'password': passwordTextController,
     });
 
+    print("email pass sent to request");
+
     request.post().then((value) {
+      print("value recieved by post");
+
       Get.back();
       Get.offNamed('/homeView');
     }).catchError((onError) {});
   }
-
-  
 }
